@@ -10,17 +10,26 @@
         <link href="${facesContext.externalContext.requestContextPath}/recources/css/style.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body>
-   		<h:form>
-    	   Login :<h:inputText value="#{helloBean.login}" id="size" style="width: 175px;"></h:inputText>
-    	   <br/><br/>
-    	   Pass&nbsp;&nbsp;:<h:inputSecret value="#{helloBean.password}" style="width: 175px;" />
-    	  	 <br/>
-    	   	 <br/>
-    	 	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    	   <h:commandButton value="Ok" action="#{helloBean.welcome}"></h:commandButton>
-    	   <div id="forgotPass">
-    	   		<h:commandLink value="Forgot your password?" />
-    	   </div>	
+   		<h:form id="loginForm">
+   			<h:panelGrid columns="3">
+   			   
+   			   <h:outputText value="Login " />
+	    	   <h:inputText  value="#{loginBean.login}" id="login" required="true" requiredMessage="Please enter your login" style="width: 175px;"/>
+	    	 	<h:message for="login" errorClass="errorMessage" /> 
+	    	  
+	    	  	<h:outputText value="Password" />
+	    	  	<h:inputSecret value="#{loginBean.password}" id="password" required="true" requiredMessage="Please enter your password" style="width: 175px;" />
+	    	  	<h:message for="password"  errorClass="errorMessage" /> 
+	    	  	
+	    	  	<h:outputText value="" />
+	    	    <h:commandButton value="Login" action="#{loginBean.welcome}"/>
+	    	    <h:outputText value="" />
+	    	
+	    	   <div id="forgotPass">
+	    	   		<h:commandLink value="Forgot your password?" />
+	    	   </div>
+	    	 </h:panelGrid>
+	    	 <h:messages styleClass="errorMessage" globalOnly="true"/>
     	</h:form>
     	
     </h:body>

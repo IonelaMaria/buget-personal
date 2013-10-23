@@ -1,13 +1,15 @@
 package login;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
 import java.io.Serializable;
-import java.util.Date;
 
 @ManagedBean
 @SessionScoped
-public class HelloBean implements Serializable {
+public class LoginBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	 
 	private String login;
@@ -35,7 +37,14 @@ public class HelloBean implements Serializable {
 
 
 	public String welcome(){
-		return "success";
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+	    if ("admin".equals(login) && "pass".equals(password)) {
+	        return "success";
+	    } else {
+	        facesContext.addMessage(null, new FacesMessage("Username or password is incorrect"));
+	        return null;
+	    }
+		
 	}
 
 }

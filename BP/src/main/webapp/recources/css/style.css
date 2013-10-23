@@ -1,5 +1,9 @@
 #forgotPass{
 	
-display:inline;	
-background-color:#B0E0E6
+	display:inline;	
+	background-color:#B0E0E6;
+}
+.errorMessage{
+	
+	color:red;
 }
